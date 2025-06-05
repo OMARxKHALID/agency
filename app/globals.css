@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font Faces */
+@font-face {
+  font-family: "Mundial";
+  src: url("/fonts/Mundial-Regular.woff2") format("woff2"),
+    url("/fonts/Mundial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mundial Demi-bold";
+  src: url("/fonts/Mundial-Demibold.woff2") format("woff2"),
+    url("/fonts/Mundial-Demibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mundial Bold";
+  src: url("/fonts/Mundial-Bold.woff2") format("woff2"),
+    url("/fonts/Mundial-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-mundial;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply text-gray-700 hover:text-black transition-colors font-mundial-demi;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-mundial-demi transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full font-mundial-demi transition-colors;
+  }
+
+  /* Typography */
+  .tagline {
+    @apply inline-flex items-center bg-green-100 px-4 py-2 rounded-sm gap-3;
+  }
+
+  .tagline-text {
+    @apply text-xs font-dm-mono tracking-wider text-gray-800 uppercase font-dm-mono-medium;
+  }
+
+  .tagline-line {
+    @apply w-6 h-px bg-gray-600;
+  }
+
+  .heading-primary {
+    @apply text-7xl lg:text-8xl font-schibsted leading-none tracking-tight text-black font-schibsted-black;
+  }
+
+  .description {
+    @apply text-lg text-gray-700 leading-relaxed max-w-lg font-mundial;
+  }
+}
+
+/* Custom animations for subtle movement */
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-3px) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-2px) rotate(var(--rotation, 0deg));
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Custom focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* High-quality text rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent text selection on decorative elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@layer utilities {
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 1fr;
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid-row {
+    display: contents;
+  }
+
+  .grid-cell {
+    @apply relative;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .grid-cell::after {
+    content: "";
+    @apply absolute w-1 h-1 bg-black/60 rounded-full;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .grid-row:first-child .grid-cell::before {
+    content: "";
+    @apply absolute w-1 h-1 bg-black/60 rounded-full;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+}
