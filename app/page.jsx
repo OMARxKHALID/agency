@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/sections/hero-section";
 import GridBackground from "@/components/grid-background";
+import { MidSection } from "@/components/sections/mid-section";
 
 export default function HomePage() {
   return (
@@ -9,6 +10,8 @@ export default function HomePage() {
       </div>
       <main className="relative z-10 px-10 pt-20">
         <HeroSection />
+        <MidSection />
+
         <div className="h-[200vh] flex items-center justify-center">
           <div className="space-y-4 text-center">
             <h2 className="text-4xl font-bold text-slate-900">

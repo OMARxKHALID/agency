@@ -3,16 +3,14 @@ import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="relative px-6 md:px-12 lg:px-32 min-h-[calc(80vh-6rem)] flex items-center">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[45%_55%] items-center gap-8 w-full">
+    <section className="relative px-2 md:px-12 lg:px-22 min-h-[calc(80vh-6rem)] flex items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-[45%_55%] items-center gap-4 w-full">
         <div className="space-y-6 lg:space-y-10 lg:pr-8">
-          <div className="inline-flex items-center gap-3 px-4 py-2 border rounded-sm bg-emerald-50 border-emerald-100">
+          <div className="inline-flex items-center gap-8 px-4 py-2 border rounded-sm bg-emerald-50 border-emerald-100">
             <span className="text-[10px] md:text-xs font-dm-mono tracking-wider text-emerald-800 uppercase">
               Web Design Agency. Web Design Pakistan
             </span>
-            <div className="hidden w-6 h-px md:block bg-emerald-600" />
           </div>
-
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-schibsted leading-[0.95] lg:leading-[0.85] tracking-tight text-black">
             Creatively
             <br />
@@ -20,14 +18,12 @@ export function HeroSection() {
             <br />
             Design
           </h1>
-
-          <p className="max-w-lg text-base font-bold leading-relaxed text-gray-700 md:text-lg font-mundial">
+          <p className="max-w-lg text-base font-semibold leading-relaxed text-black md:text-lg font-mundial">
             ID Studio is an award-winning web design agency that combines the
             skills of talented in-house brand experts, web designers and
             developers to deliver results-driven websites that elevate your
             brand and drive conversions.
           </p>
-
           <Button className="w-full px-10 py-8 text-sm text-white transition-colors duration-300 bg-black rounded-full shadow-lg md:w-auto font-mundial-demi">
             Contact Us
             <ArrowRight className="w-4 h-4 ml-1" />
