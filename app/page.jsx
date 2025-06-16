@@ -3,6 +3,7 @@ import GridBackground from "@/components/grid-background";
 import { VideosSection } from "@/components/sections/videos-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { FooterSection } from "@/components/sections/footer-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,8 @@ export default function HomePage() {
         <VideosSection />
       </div>
       <ServicesSection />
+      <TestimonialsSection />
+
       <FooterSection />
     </div>
   );
