@@ -1,6 +1,8 @@
 import { HeroSection } from "@/components/sections/hero-section";
 import GridBackground from "@/components/grid-background";
-import { MidSection } from "@/components/sections/mid-section";
+import { VideosSection } from "@/components/sections/videos-section";
+import { ServicesSection } from "@/components/sections/services-section";
+import { FooterSection } from "@/components/sections/footer-section";
 
 export default function HomePage() {
   return (
@@ -8,21 +10,12 @@ export default function HomePage() {
       <div className="absolute inset-0">
         <GridBackground />
       </div>
-      <main className="relative z-10 px-10 pt-20">
+      <div className="relative z-10 px-10 pt-20">
         <HeroSection />
-        <MidSection />
-
-        <div className="h-[200vh] flex items-center justify-center">
-          <div className="space-y-4 text-center">
-            <h2 className="text-4xl font-bold text-slate-900">
-              Scroll to see header animation
-            </h2>
-            <p className="text-slate-600">
-              Scroll down and then back up to see the dark header
-            </p>
-          </div>
-        </div>
-      </main>
+        <VideosSection />
+      </div>
+      <ServicesSection />
+      <FooterSection />
     </div>
   );
 }

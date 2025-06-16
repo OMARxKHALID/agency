@@ -126,7 +126,7 @@ const VideoSlide = ({ project, index, innerRef }) => (
   </div>
 );
 
-export function MidSection() {
+export function VideosSection() {
   const sectionRef = useRef(null);
   const videoRefs = useRef([]);
 
@@ -162,7 +162,7 @@ export function MidSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[300vh] overflow-hidden"
+      className="relative w-full h-[300vh] overflow-hidden -mb-[190vh]"
     >
       {projects.map((project, index) => (
         <VideoSlide
