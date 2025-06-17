@@ -35,7 +35,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-mundial;
+    @apply bg-background text-foreground font-mundial-regular;
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -75,11 +75,11 @@
   }
 
   .heading-primary {
-    @apply text-7xl lg:text-8xl font-schibsted leading-none tracking-tight text-black font-schibsted-black;
+    @apply text-7xl lg:text-8xl font-schibsted-black leading-none tracking-tight text-black;
   }
 
   .description {
-    @apply text-lg text-gray-700 leading-relaxed max-w-lg font-mundial;
+    @apply text-lg text-gray-700 leading-relaxed max-w-lg font-mundial-regular;
   }
 }
 
@@ -137,6 +137,10 @@ h6 {
 }
 
 @layer utilities {
+  .grid-container {
+    @apply bg-white w-full h-[calc(100%-750px)] rounded-b-[100px] relative z-10;
+  }
+
   .grid-layout {
     display: grid;
     grid-template-columns: repeat(6, 1fr);

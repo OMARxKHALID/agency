@@ -19,10 +19,10 @@ export function ServicesSection() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="space-y-8">
               <div className="space-y-6">
-                <h1 className="text-4xl font-bold text-gray-900 lg:text-5xl">
-                  Web Design
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-schibsted-black mb-4 md:mb-6">
+                  Our Services
                 </h1>
-                <p className="text-lg leading-relaxed text-gray-700">
+                <p className="text-base md:text-xl font-mundial-regular text-gray-600 max-w-3xl mx-auto">
                   Our website design team are dedicated to creating unique,
                   visually compelling brands and websites that connect with your
                   target audience. From brand strategy, planning and execution
@@ -77,7 +77,7 @@ export function ServicesSection() {
                       Digital Solutions
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold leading-tight text-gray-900">
+                  <h3 className="text-2xl font-mundial-bold text-gray-900 mb-4">
                     WE CREATE
                     <br />
                     DIGITAL THINGS

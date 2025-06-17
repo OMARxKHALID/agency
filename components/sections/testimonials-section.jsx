@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 const testimonials = [
   {
@@ -45,7 +46,8 @@ const testimonials = [
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
-  const VISIBLE_CARDS = 3;
+  const isMobile = useIsMobile();
+  const VISIBLE_CARDS = isMobile ? 1 : 3;
   const maxIndex = testimonials.length - VISIBLE_CARDS;
 
   const animateSlide = (newIndex) => {
@@ -60,7 +62,7 @@ export function TestimonialsSection() {
   };
 
   const handleNext = () => {
-    const newIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+    const newIndex = (currentIndex + 1) % (maxIndex + 1);
     setCurrentIndex(newIndex);
     animateSlide(newIndex);
   };
@@ -78,14 +80,14 @@ export function TestimonialsSection() {
         x: "0%",
       });
     }
-  }, []);
+  }, [VISIBLE_CARDS]);
 
   return (
-    <section className="relative py-20 px-14 font-mundial">
+    <section className="relative px-10 py-20 font-mundial">
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-16">
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-medium tracking-[0.2em] text-gray-800 uppercase">
+          <div className="inline-flex items-center gap-8 px-4 py-2 rounded-sm bg-emerald-50 ">
+            <span className="text-[10px] md:text-xs font-dm-mono tracking-wider text-emerald-800 uppercase">
               TESTIMONIALS
             </span>
             <div className="w-12 h-px bg-gray-800" />
@@ -93,7 +95,6 @@ export function TestimonialsSection() {
         </div>
 
         <div className="relative">
-          {/* Previous Button */}
           <div className="absolute left-0 z-10 flex flex-col items-center justify-center -translate-x-12 -translate-y-1/2 top-1/2">
             <div className="w-1 h-10 bg-gray-800" />
             <button
@@ -124,16 +125,22 @@ export function TestimonialsSection() {
                   className="flex-shrink-0 px-4"
                   style={{ width: `${100 / testimonials.length}%` }}
                 >
-                  <div className="h-full p-8 bg-teal-50">
-                    <div className="h-full p-6 lg:p-8 bg-teal-50">
-                      <blockquote className="mb-6 text-lg font-bold leading-relaxed text-gray-900 lg:mb-8 lg:text-xl">
+                  <div
+                    className="h-full p-3"
+                    style={{ backgroundColor: "#E9FFFE" }}
+                  >
+                    <div
+                      className="h-full p-2"
+                      style={{ backgroundColor: "#E9FFFE" }}
+                    >
+                      <blockquote className="mb-6 text-lg leading-relaxed text-gray-900 font-mundial-demi lg:mb-8 lg:text-xl">
                         '{testimonial.quote}'
                       </blockquote>
                       <div>
-                        <div className="mb-1 text-base font-bold text-gray-900 lg:text-lg">
+                        <div className="mb-1 text-base text-gray-900 font-mundial-bold lg:text-lg">
                           {testimonial.name}
                         </div>
-                        <div className="text-sm font-bold text-gray-700 lg:text-base">
+                        <div className="text-sm text-gray-700 font-mundial-regular lg:text-base">
                           {testimonial.company}
                         </div>
                       </div>

@@ -26,7 +26,7 @@ const navigation = {
 
 export function FooterSection() {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+    <footer className="relative overflow-hidden ">
       {/* Contact Section */}
       <div className="px-6 py-16 mx-auto max-w-7xl lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2">

@@ -6,19 +6,19 @@ export function HeroSection() {
     <section className="relative px-2 md:px-12 lg:px-22 min-h-[calc(80vh-6rem)] flex items-center">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-[45%_55%] items-center gap-4 w-full">
         <div className="space-y-6 lg:space-y-10 lg:pr-8">
-          <div className="inline-flex items-center gap-8 px-4 py-2 border rounded-sm bg-emerald-50 border-emerald-100">
+          <div className="inline-flex items-center gap-8 px-4 py-2 rounded-sm bg-emerald-50 ">
             <span className="text-[10px] md:text-xs font-dm-mono tracking-wider text-emerald-800 uppercase">
               Web Design Agency. Web Design Pakistan
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-schibsted leading-[0.95] lg:leading-[0.85] tracking-tight text-black">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-schibsted-black leading-[0.95] lg:leading-[0.85] tracking-tight text-black">
             Creatively
             <br />
             Driven Web
             <br />
             Design
           </h1>
-          <p className="max-w-lg text-base font-semibold leading-relaxed text-black md:text-lg font-mundial">
+          <p className="max-w-lg text-base leading-relaxed text-black font-mundial-regular md:text-lg">
             ID Studio is an award-winning web design agency that combines the
             skills of talented in-house brand experts, web designers and
             developers to deliver results-driven websites that elevate your
