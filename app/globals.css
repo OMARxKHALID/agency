@@ -161,7 +161,7 @@ h6 {
 
   .grid-cell::after {
     content: "";
-    @apply absolute w-1 h-1 bg-black/60 rounded-full;
+    @apply absolute w-1 h-1 bg-black rounded-full;
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
@@ -169,7 +169,7 @@ h6 {
 
   .grid-row:first-child .grid-cell::before {
     content: "";
-    @apply absolute w-1 h-1 bg-black/60 rounded-full;
+    @apply absolute w-1 h-1 bg-black rounded-full;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
