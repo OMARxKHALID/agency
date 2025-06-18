@@ -46,72 +46,6 @@
   }
 }
 
-@layer components {
-  /* Navigation */
-  .nav-link {
-    @apply text-gray-700 hover:text-black transition-colors font-mundial-demi;
-  }
-
-  /* Buttons */
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-mundial-demi transition-colors;
-  }
-
-  .btn-secondary {
-    @apply bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full font-mundial-demi transition-colors;
-  }
-
-  /* Typography */
-  .tagline {
-    @apply inline-flex items-center bg-green-100 px-4 py-2 rounded-sm gap-3;
-  }
-
-  .tagline-text {
-    @apply text-xs font-dm-mono tracking-wider text-gray-800 uppercase font-dm-mono-medium;
-  }
-
-  .tagline-line {
-    @apply w-6 h-px bg-gray-600;
-  }
-
-  .heading-primary {
-    @apply text-7xl lg:text-8xl font-schibsted-black leading-none tracking-tight text-black;
-  }
-
-  .description {
-    @apply text-lg text-gray-700 leading-relaxed max-w-lg font-mundial-regular;
-  }
-}
-
-/* Custom animations for subtle movement */
-@keyframes float-gentle {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(var(--rotation, 0deg));
-  }
-  50% {
-    transform: translateY(-3px) rotate(var(--rotation, 0deg));
-  }
-}
-
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(var(--rotation, 0deg));
-  }
-  50% {
-    transform: translateY(-2px) rotate(var(--rotation, 0deg));
-  }
-}
-
-.animate-float-gentle {
-  animation: float-gentle 4s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
 /* Custom focus styles for accessibility */
 .focus-visible:focus {
   outline: 2px solid #2563eb;
@@ -128,17 +62,9 @@ h6 {
   text-rendering: optimizeLegibility;
 }
 
-/* Prevent text selection on decorative elements */
-.no-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 @layer utilities {
   .grid-container {
-    @apply bg-white w-full h-[calc(100%-750px)] rounded-b-[100px] relative z-10;
+    @apply bg-white w-full h-[calc(100%-400px)] rounded-b-[100px] relative z-10;
   }
 
   .grid-layout {
@@ -155,13 +81,14 @@ h6 {
 
   .grid-cell {
     @apply relative;
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-right: 1px solid rgba(var(--grid-color), 0.08);
+    border-bottom: 1px solid rgba(var(--grid-color), 0.08);
   }
 
   .grid-cell::after {
     content: "";
-    @apply absolute w-1 h-1 bg-black rounded-full;
+    @apply absolute w-1 h-1 rounded-full;
+    background-color: rgb(var(--grid-color));
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
@@ -169,7 +96,8 @@ h6 {
 
   .grid-row:first-child .grid-cell::before {
     content: "";
-    @apply absolute w-1 h-1 bg-black rounded-full;
+    @apply absolute w-1 h-1 rounded-full;
+    background-color: rgb(var(--grid-color));
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
