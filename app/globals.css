@@ -64,7 +64,7 @@ h6 {
 
 @layer utilities {
   .grid-container {
-    @apply bg-white w-full h-[calc(100%-400px)] rounded-b-[100px] relative z-10;
+    @apply bg-white w-full h-[calc(100%-900px)] rounded-b-[100px] relative z-10;
   }
 
   .grid-layout {
