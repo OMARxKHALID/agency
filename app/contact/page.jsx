@@ -5,30 +5,30 @@ import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-white">
       <GridBackground />
       <Header />
 
-      <main className="relative z-10 px-6 md:px-10 pt-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6">
+      <main className="relative z-10 px-6 pt-32 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center md:mb-16">
+            <h1 className="mb-4 text-4xl font-black md:text-5xl lg:text-6xl md:mb-6">
               Contact Us
             </h1>
-            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="max-w-3xl mx-auto text-base text-gray-600 md:text-xl">
               Ready to start your project? Get in touch with our team and let's
               discuss your vision.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-16 mb-20">
+          <div className="grid gap-8 mb-20 md:grid-cols-2 lg:gap-16">
             {/* Contact Form */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold mb-8">Send us a message</h2>
+              <h2 className="mb-8 text-3xl font-bold">Send us a message</h2>
               <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-700">
                       First Name
                     </label>
                     <input
@@ -38,7 +38,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-700">
                       Last Name
                     </label>
                     <input
@@ -49,7 +49,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Email
                   </label>
                   <input
@@ -59,7 +59,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Message
                   </label>
                   <textarea
@@ -68,34 +68,34 @@ export default function ContactPage() {
                     placeholder="Tell us about your project..."
                   />
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-800 text-white py-4">
-                  Send Message <ArrowRight className="ml-2 h-5 w-5" />
+                <Button className="w-full py-4 text-white bg-black hover:bg-gray-800">
+                  Send Message <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </form>
             </div>
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <h2 className="text-3xl font-bold mb-8">Get in touch</h2>
+              <h2 className="mb-8 text-3xl font-bold">Get in touch</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg">
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Phone</h3>
+                    <h3 className="text-lg font-semibold">Phone</h3>
                     <p className="text-gray-600">020 3808 4438</p>
                     <p className="text-sm text-gray-500">Mon-Fri 9am-6pm</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Email</h3>
+                    <h3 className="text-lg font-semibold">Email</h3>
                     <p className="text-gray-600">hello@idstudio.co.uk</p>
                     <p className="text-sm text-gray-500">
                       We'll respond within 24 hours
@@ -104,11 +104,11 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg">
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">Office</h3>
+                    <h3 className="text-lg font-semibold">Office</h3>
                     <p className="text-gray-600">London, United Kingdom</p>
                     <p className="text-sm text-gray-500">
                       Available for meetings

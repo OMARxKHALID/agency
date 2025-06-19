@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { useIsMobile } from "../../hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const testimonials = [
   {
@@ -83,7 +83,7 @@ export function TestimonialsSection() {
   }, [VISIBLE_CARDS]);
 
   return (
-    <section className="relative px-10 py-20 font-mundial">
+    <section className="relative px-10  py-20 font-mundial">
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-16">
           <div className="inline-flex items-center gap-8 px-4 py-2 rounded-sm bg-emerald-50 ">

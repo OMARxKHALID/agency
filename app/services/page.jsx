@@ -5,24 +5,24 @@ import { ArrowRight } from "lucide-react";
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-white">
       <GridBackground />
       <Header />
 
-      <main className="relative z-10 px-6 md:px-10 pt-32">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6">
+      <main className="relative z-10 px-6 pt-32 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center md:mb-16">
+            <h1 className="mb-4 text-4xl font-black md:text-5xl lg:text-6xl md:mb-6">
               Our Services
             </h1>
-            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="max-w-3xl mx-auto text-base text-gray-600 md:text-xl">
               We offer comprehensive digital solutions to help your business
               thrive in the digital landscape.
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
+          <div className="grid gap-6 mb-20 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
             {[
               {
                 title: "Web Design",
@@ -69,24 +69,24 @@ export default function ServicesPage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm p-8 rounded-lg"
+                className="p-8 transition-all duration-300 border-0 rounded-lg group hover:shadow-2xl hover:-translate-y-2 bg-white/80 backdrop-blur-sm"
               >
                 <div
                   className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="mb-4 text-2xl font-bold text-gray-900">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="mb-6 leading-relaxed text-gray-600">
                   {service.description}
                 </p>
                 <Button
                   variant="outline"
-                  className="group-hover:bg-gray-900 group-hover:text-white transition-colors"
+                  className="transition-colors group-hover:bg-gray-900 group-hover:text-white"
                 >
-                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             ))}

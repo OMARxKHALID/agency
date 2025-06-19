@@ -4,9 +4,9 @@ import { Linkedin, Twitter, Facebook, Instagram, Dribbble } from "lucide-react";
 
 export function FooterSection() {
   return (
-    <footer className="relative px-4 py-8 overflow-hidden md:py-12 lg:py-16">
+    <footer className="relative px-4 py-8 overflow-hidden sm:mb-20 md:py-12 lg:py-16">
       <div className="relative z-10 flex flex-col items-center justify-center text-center">
-        <h1 className="mb-4 text-4xl font-bold leading-tight text-white md:mb-8 md:text-6xl lg:text-9xl">
+        <h1 className="mb-4 text-5xl font-bold leading-tight text-white md:mb-8 md:text-6xl lg:text-9xl">
           Pop the bubbles
           <br />
           and call us.
@@ -20,8 +20,8 @@ export function FooterSection() {
           <ArrowRight className="w-8 h-8 ml-2 md:w-16 md:h-16" />
         </Button>
       </div>
-      <div className="relative z-10 mt-8 md:mt-12">
-        <div className="mx-auto max-w-7xl">
+      <div className="relative z-10 mt-8 ">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 gap-8 md:gap-12 lg:gap-16 lg:grid-cols-2">
             <div className="flex flex-col justify-between h-full">
               <div className="space-y-3 md:space-y-4">
