@@ -2,9 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Twitter, Facebook, Instagram, Dribbble } from "lucide-react";
 
-export function FooterSection() {
+export function Footer() {
   return (
-    <footer className="relative px-4 py-8 overflow-hidden sm:mb-20 md:py-12 lg:py-16">
+    <footer className="relative px-4 py-8 overflow-hidden md:py-12 lg:py-16  bg-[#1d2027]">
       <div className="relative z-10 flex flex-col items-center justify-center text-center">
         <h1 className="mb-4 text-5xl font-bold leading-tight text-white md:mb-8 md:text-6xl lg:text-9xl">
           Pop the bubbles

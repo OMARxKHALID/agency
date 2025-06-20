@@ -1,4 +1,4 @@
-export default function GridBackground() {
+export function GridBackground() {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden bg-[#1d2027]">
       <div className="grid-container" style={{ "--grid-color": "0, 0, 0" }}>

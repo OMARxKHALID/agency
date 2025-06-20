@@ -1,5 +1,6 @@
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import "./globals.css";
-import Header from "@/components/layout/header";
 
 export const metadata = {
   title: "ID Studio - Creative Web Design Agency",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
       <body className="font-mundial">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
