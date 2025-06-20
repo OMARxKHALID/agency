@@ -1,14 +1,9 @@
-import Header from "@/components/layout/header";
-import GridBackground from "@/components/grid-background";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white">
-      <GridBackground />
-      <Header />
-
       <main className="relative z-10 px-6 pt-32 md:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center md:mb-16">
