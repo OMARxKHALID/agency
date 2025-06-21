@@ -1,23 +1,18 @@
-export default function ShowcasePage() {
+const ShowcasePage = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white">
-      <main className="relative z-10 px-10 pt-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <h1 className="mb-6 text-6xl font-black">Our Showcase</h1>
-            <p className="max-w-3xl mx-auto text-xl text-gray-600">
-              Explore our portfolio of award-winning web design projects that
-              have helped brands elevate their digital presence and drive
-              meaningful results.
-            </p>
-          </div>
-
-          {/* Portfolio Grid Placeholder */}
-          <div className="grid gap-8 mb-20 md:grid-cols-2 lg:grid-cols-3">
-            {/* Add your showcase items here */}
-          </div>
-        </div>
-      </main>
+    <div className="relative min-h-screen mt-16 overflow-hidden">
+      <section className="relative z-10 flex flex-col items-center max-w-6xl px-6 py-20 mx-auto text-center">
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-50/60 to-pink-50/40 -z-10 rounded-b-3xl" />
+        <h1 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-6xl drop-shadow-sm">
+          Our Work for Great Clients
+        </h1>
+        <p className="max-w-3xl mx-auto mb-8 text-lg leading-relaxed text-gray-600 md:text-2xl">
+          We help B2B brands shine through storytelling, branding, and
+          development. Here’s a taste of what we’ve created for our partners.
+        </p>
+      </section>
     </div>
   );
-}
+};
+
+export default ShowcasePage;

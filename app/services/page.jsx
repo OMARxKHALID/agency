@@ -1,15 +1,13 @@
 export default function ServicesPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white">
-      <main className="relative z-10 px-6 pt-32 md:px-10">
+      <main className="relative z-10 px-10 pt-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center md:mb-16">
-            <h1 className="mb-4 text-4xl font-black md:text-5xl lg:text-6xl md:mb-6">
-              Our Services
-            </h1>
-            <p className="max-w-3xl mx-auto text-base text-gray-600 md:text-xl">
-              We offer comprehensive digital solutions to help your business
-              thrive in the digital landscape.
+          <div className="mb-16 text-center">
+            <h1 className="mb-6 text-6xl font-black">Our Services</h1>
+            <p className="max-w-3xl mx-auto text-xl text-gray-600">
+              From web design and development to branding and strategy, we offer
+              a full suite of digital services to help your business succeed.
             </p>
           </div>
 

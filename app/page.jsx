@@ -5,8 +5,8 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <div className="relative z-10 px-10 pt-20">
+    <div className="relative min-h-screen overflow-hidden inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+      <div className="relative px-10 pt-20 ">
         <HeroSection />
         <VideosSection />
       </div>

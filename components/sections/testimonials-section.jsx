@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useState, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const testimonials = [
@@ -50,43 +49,23 @@ export function TestimonialsSection() {
   const VISIBLE_CARDS = isMobile ? 1 : 3;
   const maxIndex = testimonials.length - VISIBLE_CARDS;
 
-  const animateSlide = (newIndex) => {
-    if (!containerRef.current) return;
-
-    const translateX = -(newIndex * (100 / VISIBLE_CARDS));
-    gsap.to(containerRef.current, {
-      x: `${translateX}%`,
-      duration: 0.8,
-      ease: "power2.out",
-    });
+  const handlePrevious = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? testimonials.length - VISIBLE_CARDS : prev - 1
+    );
   };
 
   const handleNext = () => {
-    const newIndex = (currentIndex + 1) % (maxIndex + 1);
-    setCurrentIndex(newIndex);
-    animateSlide(newIndex);
+    setCurrentIndex((prev) =>
+      prev === testimonials.length - VISIBLE_CARDS ? 0 : prev + 1
+    );
   };
-
-  const handlePrevious = () => {
-    const newIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
-    setCurrentIndex(newIndex);
-    animateSlide(newIndex);
-  };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      gsap.set(containerRef.current, {
-        width: `${(testimonials.length / VISIBLE_CARDS) * 100}%`,
-        x: "0%",
-      });
-    }
-  }, [VISIBLE_CARDS]);
 
   return (
-    <section className="relative px-10  py-20 font-mundial">
+    <section className="relative px-10 py-20 font-mundial">
       <div className="relative mx-auto max-w-7xl">
         <div className="mb-16">
-          <div className="inline-flex items-center gap-8 px-4 py-2 rounded-sm bg-emerald-50 ">
+          <div className="inline-flex items-center gap-8 px-4 py-2 rounded-sm bg-emerald-50">
             <span className="text-[10px] md:text-xs font-dm-mono tracking-wider text-emerald-800 uppercase">
               TESTIMONIALS
             </span>
@@ -95,6 +74,7 @@ export function TestimonialsSection() {
         </div>
 
         <div className="relative">
+          {/* Previous Button */}
           <div className="absolute left-0 z-10 flex flex-col items-center justify-center -translate-x-12 -translate-y-1/2 top-1/2">
             <div className="w-1 h-10 bg-gray-800" />
             <button
@@ -106,7 +86,8 @@ export function TestimonialsSection() {
             <div className="w-1 h-10 bg-gray-800" />
           </div>
 
-          <div className="absolute right-0 z-10 flex flex-col items-center justify-center translate-x-12 -translate-y-1/2 top-1/2">
+          {/* Next Button */}
+          <div className="absolute z-10 flex flex-col items-center justify-center translate-x-12 -translate-y-1/2 right-[1.2rem] top-1/2">
             <div className="w-1 h-10 bg-gray-800" />
             <button
               onClick={handleNext}
@@ -117,22 +98,26 @@ export function TestimonialsSection() {
             <div className="w-1 h-10 bg-gray-800" />
           </div>
 
+          {/* Testimonials Container */}
           <div className="overflow-hidden">
-            <div ref={containerRef} className="flex">
+            <div
+              ref={containerRef}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${
+                  currentIndex * (100 / testimonials.length)
+                }%)`,
+                width: `${(100 / VISIBLE_CARDS) * testimonials.length}%`,
+              }}
+            >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
                   className="flex-shrink-0 px-4"
                   style={{ width: `${100 / testimonials.length}%` }}
                 >
-                  <div
-                    className="h-full p-3"
-                    style={{ backgroundColor: "#E9FFFE" }}
-                  >
-                    <div
-                      className="h-full p-2"
-                      style={{ backgroundColor: "#E9FFFE" }}
-                    >
+                  <div className="h-full p-3 bg-[#E9FFFE]">
+                    <div className="h-full p-2 bg-[#E9FFFE]">
                       <blockquote className="mb-6 text-lg leading-relaxed text-gray-900 font-mundial-demi lg:mb-8 lg:text-xl">
                         '{testimonial.quote}'
                       </blockquote>

@@ -4,15 +4,13 @@ import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 export default function ContactPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white">
-      <main className="relative z-10 px-6 pt-32 md:px-10">
+      <main className="relative px-10 pt-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center md:mb-16">
-            <h1 className="mb-4 text-4xl font-black md:text-5xl lg:text-6xl md:mb-6">
-              Contact Us
-            </h1>
-            <p className="max-w-3xl mx-auto text-base text-gray-600 md:text-xl">
-              Ready to start your project? Get in touch with our team and let's
-              discuss your vision.
+          <div className="mb-16 text-center">
+            <h1 className="mb-6 text-6xl font-black">Contact Us</h1>
+            <p className="max-w-3xl mx-auto text-xl text-gray-600">
+              Ready to start your project or have questions? Reach out to our
+              team and we’ll get back to you soon.
             </p>
           </div>
 
