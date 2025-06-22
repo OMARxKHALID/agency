@@ -15,7 +15,57 @@ const showcaseItems = [
   },
 ];
 
-const ShowcasePage = () => {
+const portfolioItems = [
+  {
+    title: "ISAM Securities",
+    image: "https://placehold.co/400x300?text=ISAM+Securities",
+  },
+  {
+    title: "New Branding",
+    image: "https://placehold.co/400x300?text=New+Branding",
+  },
+  {
+    title: "Star Logo",
+    image: "https://placehold.co/400x300?text=Star+Logo",
+  },
+  {
+    title: "CEDIA Foundation",
+    image: "https://placehold.co/400x300?text=CEDIA+Foundation",
+  },
+  {
+    title: "Colorful Logo",
+    image: "https://placehold.co/400x300?text=Colorful+Logo",
+  },
+  {
+    title: "Meniga",
+    image: "https://placehold.co/400x300?text=Meniga",
+  },
+  {
+    title: "Rambert Grades",
+    image: "https://placehold.co/400x300?text=Rambert+Grades",
+  },
+  {
+    title: "Now Bloom",
+    image: "https://placehold.co/400x300?text=Now+Bloom",
+  },
+  {
+    title: "Qodea",
+    image: "https://placehold.co/400x300?text=Qodea",
+  },
+  {
+    title: "Portrait",
+    image: "https://placehold.co/400x300?text=Portrait",
+  },
+  {
+    title: "CEDIA",
+    image: "https://placehold.co/400x300?text=CEDIA",
+  },
+  {
+    title: "SCEND",
+    image: "https://placehold.co/400x300?text=SCEND",
+  },
+];
+export function Showcase() {
   return (
     <section className="relative min-h-screen px-6 mt-16 py-28 md:px-10 lg:px-28 ">
       <div className="mx-auto">
@@ -54,6 +104,44 @@ const ShowcasePage = () => {
       </div>
     </section>
   );
-};
+}
+
+export function Portfolio() {
+  return (
+    <>
+      <div className="px-6 mb-2 md:px-10 lg:px-28 ">
+        <div className="inline-flex items-center gap-4 px-4 py-2 rounded-sm bg-emerald-50">
+          <span className="text-[10px] md:text-xs font-dm-mono tracking-wider text-emerald-800 uppercase">
+            FEATURED
+          </span>
+          <div className="w-6 h-px bg-black" />
+        </div>
+      </div>
+      <section className="px-6 py-16 md:px-10 lg:px-16">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {portfolioItems.map((item, idx) => (
+            <div key={idx} className="relative group">
+              <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="object-cover w-full h-full rounded-2xl"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+export function ShowcasePage() {
+  return (
+    <div>
+      <Showcase />
+      <Portfolio />
+    </div>
+  );
+}
 
 export default ShowcasePage;

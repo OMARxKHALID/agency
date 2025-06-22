@@ -82,18 +82,18 @@ h6 {
 }
 @layer utilities {
   .bg-grid {
-    background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-      linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-image: linear-gradient(to right, #222 1px, transparent 1px),
+      linear-gradient(to bottom, #222 1px, transparent 1px);
     background-size: 12rem 12rem;
   }
   .bg-grid-dark {
-    background-image: linear-gradient(to right, #535353 1px, transparent 1px),
-      linear-gradient(to bottom, #535353 1px, transparent 1px);
+    background-image: linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
     background-size: 12rem 12rem;
   }
   .bg-grid-sm {
-    background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-      linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-image: linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
     background-size: 8rem 8rem;
   }
   .bg-grid-sm-dark {

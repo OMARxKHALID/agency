@@ -4,7 +4,7 @@ import { Linkedin, Twitter, Facebook, Instagram, Dribbble } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative px-4 py-8 overflow-hidden md:py-12 lg:py-16  inset-0 h-full w-full bg-grid-dark sm:bg-grid-sm-dark bg-[#1d2027]">
+    <footer className="relative px-4 py-8 overflow-hidden md:py-12 lg:py-16 inset-0 h-full w-full bg-grid-dark sm:bg-grid-sm-dark bg-[#1d2027]">
       <div className="relative z-10 flex flex-col items-center justify-center text-center">
         <h1 className="mb-4 text-5xl font-bold leading-tight text-white md:mb-8 md:text-6xl lg:text-9xl">
           Pop the bubbles
