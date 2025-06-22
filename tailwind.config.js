@@ -53,7 +53,7 @@ module.exports = {
         schibsted: ["Schibsted Grotesk", "system-ui", "sans-serif"],
       },
       fontWeight: {
-        "mundial-regular": "400",
+        "mundial-regular": "500",
         "mundial-demi": "600",
         "mundial-bold": "700",
         "dm-mono-medium": "500",

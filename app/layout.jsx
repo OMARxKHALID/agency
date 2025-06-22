@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="font-mundial bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:12rem_12rem]">
+      <body className="antialiased font-mundial bg-grid sm:bg-grid-sm">
         <Header />
         {children}
         <Footer />
