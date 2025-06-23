@@ -15,7 +15,7 @@ export const GetInTouch = () => {
   return (
     <div className="relative w-full pt-40 overflow-hidden">
       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-        <div className="relative w-1/4 translate-y-20 translate-x-28 h-1/4 md:w-2/4 md:h-2/4 lg:w-3/4 lg:h-3/4">
+        <div className="relative w-2/3 h-32 translate-y-20 xs:w-1/2 xs:h-40 sm:w-1/3 sm:h-48 md:w-2/4 md:h-2/4 lg:w-3/4 lg:h-3/4 translate-x-28">
           <Image
             src="/images/lc.webp"
             alt="Lets Chat Foreground"

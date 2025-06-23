@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased font-mundial bg-grid sm:bg-grid-sm">
+      <body className="antialiased font-mundial bg-grid ">
         <Header />
         {children}
         <Footer />
