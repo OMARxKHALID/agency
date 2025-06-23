@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import MAP_STYLE from "@/lib/styles.json";
 
 export const GetInTouch = () => {
   const [mounted, setMounted] = useState(false);
@@ -243,11 +244,187 @@ export const ContactForm = () => {
   );
 };
 
+// Google Maps Component
+const GoogleMapComponent = ({ selectedOffice }) => {
+  const mapRef = useRef(null);
+  const [map, setMap] = useState(null);
+  const [markers, setMarkers] = useState([]);
+
+  const offices = {
+    Richmond: {
+      lat: 51.4613,
+      lng: -0.3037,
+      address: "56 Kew Road, Richmond, Surrey, TW9 2PQ",
+    },
+    "South Bank": {
+      lat: 51.5074,
+      lng: -0.11,
+      address: "30 Stamford Street, London, SE1 9PY",
+    },
+    "Tottenham Ct Rd": {
+      lat: 51.5198,
+      lng: -0.1343,
+      address: "85 Tottenham Ct Rd, London, W1T 4TQ",
+    },
+  };
+
+  useEffect(() => {
+    if (!window.google) {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwff104MGygd5jbcqjzVu8fMP7pp6M8I&libraries=places`;
+      script.async = true;
+      script.defer = true;
+      script.onload = initializeMap;
+      document.head.appendChild(script);
+    } else {
+      initializeMap();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (map && selectedOffice) {
+      const office = offices[selectedOffice];
+      if (office) {
+        map.setCenter({ lat: office.lat, lng: office.lng });
+        map.setZoom(15);
+
+        // Clear existing markers
+        markers.forEach((marker) => marker.setMap(null));
+
+        // Add new marker
+        const marker = new window.google.maps.Marker({
+          position: { lat: office.lat, lng: office.lng },
+          map: map,
+          title: selectedOffice,
+          icon: {
+            path: window.google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: "#000000",
+            fillOpacity: 1,
+            strokeColor: "#ffffff",
+            strokeWeight: 2,
+          },
+        });
+
+        setMarkers([marker]);
+      }
+    }
+  }, [map, selectedOffice]);
+
+  const initializeMap = () => {
+    if (mapRef.current) {
+      const mapInstance = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 51.4613, lng: -0.3037 },
+        zoom: 15,
+        styles: MAP_STYLE,
+        disableDefaultUI: true,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        zoomControl: true,
+        controlSize: 32,
+      });
+      setMap(mapInstance);
+    }
+  };
+
+  return (
+    <div
+      ref={mapRef}
+      className="w-full h-full overflow-hidden min-h-96 rounded-2xl"
+      style={{ minHeight: "400px" }}
+    />
+  );
+};
+
+export const OfficeDirections = () => {
+  const [selectedOffice, setSelectedOffice] = useState("Richmond");
+
+  const offices = [
+    {
+      name: "Richmond",
+      address: "56 Kew Road, Richmond, Surrey, TW9 2PQ, 020 8948 5808",
+      bgColor: "bg-lime-200",
+    },
+    {
+      name: "South Bank",
+      address: "30 Stamford Street, London, SE1 9PY, 020 3908 4428",
+      bgColor: "bg-white",
+    },
+    {
+      name: "Tottenham Ct Rd",
+      address: "85 Tottenham Ct Rd, London, W1T 4TQ",
+      bgColor: "bg-white",
+    },
+  ];
+
+  return (
+    <div className="px-4 py-10">
+      <div className="mx-auto">
+        <h1 className="mb-8 text-4xl font-black tracking-tight text-black sm:mb-12 sm:text-5xl md:text-5xl lg:text-6xl font-mundial-demi">
+          Office Directions
+        </h1>
+
+        <div className="space-y-8">
+          {/* Office List */}
+          <div className="space-y-4">
+            {offices.map((office) => (
+              <div
+                key={office.name}
+                className={`${
+                  office.bgColor
+                } border-[1.5px] border-black rounded-2xl overflow-hidden cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                  selectedOffice === office.name ? "ring-2 ring-black" : ""
+                }`}
+                onClick={() => setSelectedOffice(office.name)}
+              >
+                <div className="flex items-center justify-between p-6">
+                  <div className="flex-1">
+                    <h3 className="mb-2 text-xl font-bold text-black">
+                      {office.name}
+                    </h3>
+                    <p className="text-base font-medium text-black">
+                      {office.address}
+                    </p>
+                  </div>
+                  <div className="ml-4">
+                    <svg
+                      className="w-6 h-6 text-black"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Google Map Container */}
+          <div className="relative">
+            <div className="w-full h-full overflow-hidden rounded-2xl">
+              <GoogleMapComponent selectedOffice={selectedOffice} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ContactPage = () => {
   return (
     <div>
       <GetInTouch />
       <ContactForm />
+      <OfficeDirections />
     </div>
   );
 };

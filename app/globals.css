@@ -5,8 +5,7 @@
 /* Custom Font Faces */
 @font-face {
   font-family: "Mundial";
-  src: url("/fonts/Mundial-Regular.woff2") format("woff2"),
-    url("/fonts/Mundial-Regular.woff") format("woff");
+  src: url("/fonts/Mundial-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,8 +13,7 @@
 
 @font-face {
   font-family: "Mundial Demi-bold";
-  src: url("/fonts/Mundial-Demibold.woff2") format("woff2"),
-    url("/fonts/Mundial-Demibold.woff") format("woff");
+  src: url("/fonts/Mundial-Demibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -23,8 +21,7 @@
 
 @font-face {
   font-family: "Mundial Bold";
-  src: url("/fonts/Mundial-Bold.woff2") format("woff2"),
-    url("/fonts/Mundial-Bold.woff") format("woff");
+  src: url("/fonts/Mundial-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

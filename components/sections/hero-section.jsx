@@ -11,7 +11,7 @@ export function HeroSection() {
               Web Design Agency. Web Design Pakistan
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-schibsted-black leading-[0.95] lg:leading-[0.85] tracking-tight text-black">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-schibsted leading-[0.95] lg:leading-[0.85] tracking-tight text-black">
             Creatively
             <br />
             Driven Web

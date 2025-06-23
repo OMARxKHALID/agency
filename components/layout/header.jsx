@@ -62,7 +62,7 @@ export function Header() {
                   key={href}
                   href={href}
                   className={cn(
-                    "text-lg font-mundial-demi transition-colors relative overflow-hidden group px-1",
+                    "text-lg font-mundial-regular transition-colors relative overflow-hidden group px-1",
                     navTextColor
                   )}
                 >
