@@ -24,154 +24,156 @@ const ContactPage = () => {
   };
 
   return (
-    <section>
-      <div className="px-40 py-32 mx-auto border border-black rounded-3xl border-opacity-10 bg-opacity-80">
-        <div className="flex items-center justify-center min-h-screen bg-[#f0e6ff]">
-          <div className="w-full max-w-6xl px-10 py-10 mx-auto">
-            <h1 className="mb-10 font-extrabold text-black text-8xl tracking-tight leading-[0.9]">
-              Contact Us
-            </h1>
+    <div className="min-h-screen px-4 py-10 sm:px-8 md:p-20 lg:p-20">
+      <div className="p-4 mx-auto max-w-7xl sm:p-8 md:p-12 bg-gradient-to-br from-purple-100 to-pink-50 bg-opacity-70 rounded-3xl">
+        <h1 className="mb-8 text-4xl font-black tracking-tight text-black sm:mb-10 md:mb-12 sm:text-5xl md:text-6xl lg:text-7xl font-mundial-demi">
+          Contact Us
+        </h1>
 
-            <div className="mb-10">
-              <div className="flex items-center justify-between p-8 mb-5 bg-white border border-black bg-opacity-60 border-opacity-10 rounded-2xl">
-                <div className="flex-1 text-2xl font-normal text-black">
-                  London
-                </div>
-                <div className="flex-1 text-2xl font-normal text-center text-black">
-                  020 3908 4428
-                </div>
-                <div className="flex-1 text-2xl font-normal text-right text-black">
-                  london@netdreams.co.uk
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between p-8 bg-white border border-black bg-opacity-60 border-opacity-10 rounded-2xl">
-                <div className="flex-1 text-2xl font-normal text-black">
-                  Richmond
-                </div>
-                <div className="flex-1 text-2xl font-normal text-center text-black">
-                  020 8948 5808
-                </div>
-                <div className="flex-1 text-2xl font-normal text-right text-black">
-                  richmond@netdreams.co.uk
-                </div>
-              </div>
+        {/* Contact Info Cards */}
+        <div className="mb-8 space-y-4 sm:mb-10 md:mb-12">
+          <div className="flex flex-col items-start justify-between gap-2 p-4 border-[1.5px] sm:flex-row sm:items-center sm:p-6 rounded-2xl sm:gap-0">
+            <div className="flex-1 text-base font-medium text-black sm:text-lg md:text-xl">
+              London
             </div>
+            <div className="flex-1 text-base font-medium text-center text-black sm:text-lg md:text-xl">
+              020 3908 4428
+            </div>
+            <div className="flex-1 text-base font-medium text-right text-black sm:text-lg md:text-xl">
+              london@netdreams.co.uk
+            </div>
+          </div>
 
-            <div>
-              <div className="mb-5">
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-lg font-normal text-gray-600"
-                >
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-6 py-5 text-lg text-black transition-all duration-200 bg-white border border-black border-opacity-12 rounded-xl bg-opacity-70 focus:outline-none focus:border-black focus:border-opacity-20 focus:bg-white focus:bg-opacity-90"
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="phone"
-                  className="block mb-2 text-lg font-normal text-gray-600"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-6 py-5 text-lg text-black transition-all duration-200 bg-white border border-black border-opacity-12 rounded-xl bg-opacity-70 focus:outline-none focus:border-black focus:border-opacity-20 focus:bg-white focus:bg-opacity-90"
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-lg font-normal text-gray-600"
-                >
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-6 py-5 text-lg text-black transition-all duration-200 bg-white border border-black border-opacity-12 rounded-xl bg-opacity-70 focus:outline-none focus:border-black focus:border-opacity-20 focus:bg-white focus:bg-opacity-90"
-                />
-              </div>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="message"
-                  className="block mb-2 text-lg font-normal text-gray-600"
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-6 py-5 text-lg text-black transition-all duration-200 bg-white border border-black resize-y border-opacity-12 rounded-xl bg-opacity-70 focus:outline-none focus:border-black focus:border-opacity-20 focus:bg-white focus:bg-opacity-90 min-h-40"
-                />
-              </div>
-
-              <div className="flex items-start gap-3 mb-6">
-                <input
-                  type="checkbox"
-                  id="newsletter"
-                  name="newsletter"
-                  checked={formData.newsletter}
-                  onChange={handleInputChange}
-                  className="w-4 h-4 mt-0.5 flex-shrink-0"
-                />
-                <label
-                  htmlFor="newsletter"
-                  className="text-base font-normal leading-relaxed text-gray-600"
-                >
-                  Sign up to our newsletter
-                </label>
-              </div>
-
-              <div className="mb-8 text-sm leading-relaxed text-gray-600">
-                This site is protected by reCAPTCHA and the Google{" "}
-                <a href="#" className="text-blue-600 hover:underline">
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a href="#" className="text-blue-600 hover:underline">
-                  Terms of Service
-                </a>{" "}
-                apply.
-              </div>
-
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className="inline-flex items-center gap-3 bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-200 hover:-translate-y-0.5"
-              >
-                Submit
-                <span className="text-lg">→</span>
-              </button>
+          <div className="flex flex-col items-start justify-between gap-2 p-4 border-[1.5px] sm:flex-row sm:items-center sm:p-6 rounded-2xl sm:gap-0">
+            <div className="flex-1 text-base font-medium text-black sm:text-lg md:text-xl">
+              Richmond
+            </div>
+            <div className="flex-1 text-base font-medium text-center text-black sm:text-lg md:text-xl">
+              020 8948 5808
+            </div>
+            <div className="flex-1 text-base font-medium text-right text-black sm:text-lg md:text-xl">
+              richmond@netdreams.co.uk
             </div>
           </div>
         </div>
+
+        {/* Form */}
+        <div className="space-y-4 sm:space-y-6">
+          <div>
+            <label
+              htmlFor="name"
+              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+            >
+              Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
+              placeholder="Name *"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="phone"
+              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+            >
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
+              placeholder="Phone Number"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="email"
+              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+            >
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
+              placeholder="Email *"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="message"
+              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+            >
+              Message *
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+              rows={6}
+              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] resize-none sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500 min-h-32 sm:min-h-40"
+              placeholder="Message *"
+            />
+          </div>
+
+          <div className="flex items-start gap-2 mb-2 sm:gap-3 sm:mb-6">
+            <input
+              type="checkbox"
+              id="newsletter"
+              name="newsletter"
+              checked={formData.newsletter}
+              onChange={handleInputChange}
+              className="flex-shrink-0 w-4 h-4 mt-1 accent-gray-800"
+            />
+            <label
+              htmlFor="newsletter"
+              className="text-sm leading-relaxed sm:text-base"
+            >
+              Sign up to our newsletter
+            </label>
+          </div>
+
+          <div className="mb-8 text-xs leading-relaxed sm:mb-6 sm:text-sm">
+            This site is protected by reCAPTCHA and the Google{" "}
+            <a href="#" className="text-blue-600 hover:underline">
+              Privacy Policy
+            </a>{" "}
+            and{" "}
+            <a href="#" className="text-blue-600 hover:underline">
+              Terms of Service
+            </a>{" "}
+            apply.
+          </div>
+
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="inline-flex items-center gap-2 px-10 py-5 mt-8 text-base font-medium text-white transition-all duration-200 bg-black rounded-full hover:bg-transparent hover:text-black border-[1.5px] border-black"
+          >
+            Submit
+            <span className="text-base">→</span>
+          </button>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
