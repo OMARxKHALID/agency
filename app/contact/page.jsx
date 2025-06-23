@@ -1,8 +1,73 @@
 "use client";
 
-import React, { useState } from "react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
 
-const ContactPage = () => {
+export const GetInTouch = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <div className="relative w-full pt-40 overflow-hidden">
+      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+        <div className="relative w-1/4 translate-y-20 translate-x-28 h-1/4 md:w-2/4 md:h-2/4 lg:w-3/4 lg:h-3/4">
+          <Image
+            src="/images/lc.webp"
+            alt="Lets Chat Foreground"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
+      <div className="relative z-10 flex items-center justify-center w-full h-full px-4">
+        <div className="relative w-full mx-auto max-w-7xl">
+          <div className="relative items-center justify-center hidden w-full md:flex">
+            <div className="relative flex items-center justify-center w-full h-52 lg:h-72 xl:h-96">
+              <Image
+                src="/images/git.svg"
+                alt="Get In Touch Desktop"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute  md:top-20  xl:top-32 lg:top-32 right-[8%] md:right-[12%] lg:right-[15%] xl:right-[18%] ">
+                <Image
+                  src="/images/message-bubble.svg"
+                  alt="Message Bubble"
+                  width={80}
+                  height={30}
+                  className="h-48 w-72 "
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+          <div className="relative flex items-center justify-center md:hidden">
+            <div className="relative flex items-center justify-center w-full h-32 max-w-xs sm:h-40 xs:max-w-sm">
+              <Image
+                src="/images/git-mobile.svg"
+                alt="Get In Touch Mobile"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -19,14 +84,16 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("Form submitted:", formData);
+    // You can add form validation or API call here
   };
 
   return (
     <div className="min-h-screen px-4 py-10 sm:px-8 md:p-20 lg:p-20">
-      <div className="p-4 mx-auto max-w-7xl sm:p-8 md:p-12 bg-gradient-to-br from-purple-100 to-pink-50 bg-opacity-70 rounded-3xl">
-        <h1 className="mb-8 text-4xl font-black tracking-tight text-black sm:mb-10 md:mb-12 sm:text-5xl md:text-6xl lg:text-7xl font-mundial-demi">
+      <div className="p-8 mx-auto max-w-7xl bg-gradient-to-br from-purple-100 to-pink-50 bg-opacity-70 rounded-3xl">
+        <h1 className="mb-6 text-4xl font-black tracking-tight text-black sm:mb-10 md:mb-12 sm:text-5xl md:text-5xl lg:text-6xl font-mundial-demi">
           Contact Us
         </h1>
 
@@ -58,7 +125,7 @@ const ContactPage = () => {
         </div>
 
         {/* Form */}
-        <div className="space-y-4 sm:space-y-6">
+        <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="name"
@@ -134,7 +201,7 @@ const ContactPage = () => {
             />
           </div>
 
-          <div className="flex items-start gap-2 mb-2 sm:gap-3 sm:mb-6">
+          <div className="flex items-start gap-2 sm:gap-3 ">
             <input
               type="checkbox"
               id="newsletter"
@@ -151,7 +218,7 @@ const ContactPage = () => {
             </label>
           </div>
 
-          <div className="mb-8 text-xs leading-relaxed sm:mb-6 sm:text-sm">
+          <div className="text-xs leading-relaxed sm:mb-6 sm:text-sm">
             This site is protected by reCAPTCHA and the Google{" "}
             <a href="#" className="text-blue-600 hover:underline">
               Privacy Policy
@@ -164,15 +231,23 @@ const ContactPage = () => {
           </div>
 
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
             className="inline-flex items-center gap-2 px-10 py-5 mt-8 text-base font-medium text-white transition-all duration-200 bg-black rounded-full hover:bg-transparent hover:text-black border-[1.5px] border-black"
           >
             Submit
             <span className="text-base">→</span>
           </button>
-        </div>
+        </form>
       </div>
+    </div>
+  );
+};
+
+const ContactPage = () => {
+  return (
+    <div>
+      <GetInTouch />
+      <ContactForm />
     </div>
   );
 };
