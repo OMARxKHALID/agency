@@ -6,7 +6,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 export default function HomePage() {
   return (
     <div className="relative inset-0 w-full h-full min-h-screen overflow-hidden ">
-      <div className="relative px-10 pt-20 ">
+      <div className="relative px-10 pt-16 ">
         <HeroSection />
         <VideosSection />
       </div>

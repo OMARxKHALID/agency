@@ -3,14 +3,37 @@
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import MAP_STYLE from "@/lib/styles.json";
+import { useGoogleMaps } from "@/hooks/use-google-maps";
+
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
+const OFFICES = [
+  {
+    name: "Richmond",
+    address: "56 Kew Road, Richmond, Surrey, TW9 2PQ, 020 8948 5808",
+    lat: 51.4613,
+    lng: -0.3037,
+    bgColor: "bg-lime-200",
+  },
+  {
+    name: "South Bank",
+    address: "30 Stamford Street, London, SE1 9PY, 020 3908 4428",
+    lat: 51.5074,
+    lng: -0.11,
+    bgColor: "bg-white",
+  },
+  {
+    name: "Tottenham Ct Rd",
+    address: "85 Tottenham Ct Rd, London, W1T 4TQ",
+    lat: 51.5198,
+    lng: -0.1343,
+    bgColor: "bg-white",
+  },
+];
 
 export const GetInTouch = () => {
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
@@ -39,13 +62,13 @@ export const GetInTouch = () => {
               />
             </div>
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute  md:top-20  xl:top-32 lg:top-32 right-[8%] md:right-[12%] lg:right-[15%] xl:right-[18%] ">
+              <div className="absolute md:top-20 xl:top-32 lg:top-32 right-[8%] md:right-[12%] lg:right-[15%] xl:right-[18%] ">
                 <Image
                   src="/images/message-bubble.svg"
                   alt="Message Bubble"
                   width={80}
                   height={30}
-                  className="h-48 w-72 "
+                  className="h-48 w-72"
                   priority
                 />
               </div>
@@ -87,8 +110,8 @@ export const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // TODO: Add form validation or API call
     console.log("Form submitted:", formData);
-    // You can add form validation or API call here
   };
 
   return (
@@ -97,112 +120,57 @@ export const ContactForm = () => {
         <h1 className="mb-6 text-4xl font-black tracking-tight text-black sm:mb-10 md:mb-12 sm:text-5xl md:text-5xl lg:text-6xl font-mundial-demi">
           Contact Us
         </h1>
-
-        {/* Contact Info Cards */}
         <div className="mb-8 space-y-4 sm:mb-10 md:mb-12">
-          <div className="flex flex-col items-start justify-between gap-2 p-4 border-[1.5px] sm:flex-row sm:items-center sm:p-6 rounded-2xl sm:gap-0">
-            <div className="flex-1 text-base font-medium text-black sm:text-lg md:text-xl">
-              London
-            </div>
-            <div className="flex-1 text-base font-medium text-center text-black sm:text-lg md:text-xl">
-              020 3908 4428
-            </div>
-            <div className="flex-1 text-base font-medium text-right text-black sm:text-lg md:text-xl">
-              london@netdreams.co.uk
-            </div>
-          </div>
-
-          <div className="flex flex-col items-start justify-between gap-2 p-4 border-[1.5px] sm:flex-row sm:items-center sm:p-6 rounded-2xl sm:gap-0">
-            <div className="flex-1 text-base font-medium text-black sm:text-lg md:text-xl">
-              Richmond
-            </div>
-            <div className="flex-1 text-base font-medium text-center text-black sm:text-lg md:text-xl">
-              020 8948 5808
-            </div>
-            <div className="flex-1 text-base font-medium text-right text-black sm:text-lg md:text-xl">
-              richmond@netdreams.co.uk
-            </div>
-          </div>
+          <ContactInfoCard
+            city="London"
+            phone="020 3908 4428"
+            email="london@netdreams.co.uk"
+          />
+          <ContactInfoCard
+            city="Richmond"
+            phone="020 8948 5808"
+            email="richmond@netdreams.co.uk"
+          />
         </div>
-
-        {/* Form */}
         <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label
-              htmlFor="name"
-              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
-            >
-              Name *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
-              placeholder="Name *"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="phone"
-              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
-            >
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
-              placeholder="Phone Number"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
-            >
-              Email *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
-              placeholder="Email *"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
-            >
-              Message *
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-              rows={6}
-              className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] resize-none sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500 min-h-32 sm:min-h-40"
-              placeholder="Message *"
-            />
-          </div>
-
-          <div className="flex items-start gap-2 sm:gap-3 ">
+          <FormInput
+            label="Name *"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            placeholder="Name *"
+          />
+          <FormInput
+            label="Phone Number"
+            id="phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder="Phone Number"
+          />
+          <FormInput
+            label="Email *"
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            placeholder="Email *"
+          />
+          <FormTextarea
+            label="Message *"
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            required
+            placeholder="Message *"
+          />
+          <div className="flex items-start gap-2 sm:gap-3">
             <input
               type="checkbox"
               id="newsletter"
@@ -218,7 +186,6 @@ export const ContactForm = () => {
               Sign up to our newsletter
             </label>
           </div>
-
           <div className="text-xs leading-relaxed sm:mb-6 sm:text-sm">
             This site is protected by reCAPTCHA and the Google{" "}
             <a href="#" className="text-blue-600 hover:underline">
@@ -230,7 +197,6 @@ export const ContactForm = () => {
             </a>{" "}
             apply.
           </div>
-
           <button
             type="submit"
             className="inline-flex items-center gap-2 px-10 py-5 mt-8 text-base font-medium text-white transition-all duration-200 bg-black rounded-full hover:bg-transparent hover:text-black border-[1.5px] border-black"
@@ -244,174 +210,201 @@ export const ContactForm = () => {
   );
 };
 
-// Google Maps Component
-const GoogleMapComponent = ({ selectedOffice }) => {
+const ContactInfoCard = ({ city, phone, email }) => (
+  <div className="flex flex-col items-start justify-between gap-2 p-4 border-[1.5px] sm:flex-row sm:items-center sm:p-6 rounded-2xl sm:gap-0">
+    <div className="flex-1 text-base font-medium text-black sm:text-lg md:text-xl">
+      {city}
+    </div>
+    <div className="flex-1 text-base font-medium text-center text-black sm:text-lg md:text-xl">
+      {phone}
+    </div>
+    <div className="flex-1 text-base font-medium text-right text-black sm:text-lg md:text-xl">
+      {email}
+    </div>
+  </div>
+);
+
+const FormInput = ({
+  label,
+  id,
+  name,
+  type = "text",
+  value,
+  onChange,
+  required = false,
+  placeholder,
+}) => (
+  <div>
+    <label
+      htmlFor={id}
+      className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+    >
+      {label}
+    </label>
+    <input
+      type={type}
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500"
+      placeholder={placeholder}
+    />
+  </div>
+);
+
+const FormTextarea = ({
+  label,
+  id,
+  name,
+  value,
+  onChange,
+  required = false,
+  placeholder,
+}) => (
+  <div>
+    <label
+      htmlFor={id}
+      className="block mb-2 text-base font-medium text-gray-700 sm:text-lg"
+    >
+      {label}
+    </label>
+    <textarea
+      id={id}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required={required}
+      rows={6}
+      className="w-full px-3 py-3 text-base text-black bg-white border-[1.5px] resize-none sm:px-4 sm:py-4 sm:text-lg bg-opacity-80 rounded-xl focus:outline-none focus:border-pink-500 min-h-32 sm:min-h-40"
+      placeholder={placeholder}
+    />
+  </div>
+);
+
+const GoogleMap = ({ selectedOffice }) => {
   const mapRef = useRef(null);
-  const [map, setMap] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  const mapInstance = useRef(null);
+  const markerRef = useRef(null);
+  const loaded = useGoogleMaps(GOOGLE_MAPS_API_KEY);
 
-  const offices = {
-    Richmond: {
-      lat: 51.4613,
-      lng: -0.3037,
-      address: "56 Kew Road, Richmond, Surrey, TW9 2PQ",
-    },
-    "South Bank": {
-      lat: 51.5074,
-      lng: -0.11,
-      address: "30 Stamford Street, London, SE1 9PY",
-    },
-    "Tottenham Ct Rd": {
-      lat: 51.5198,
-      lng: -0.1343,
-      address: "85 Tottenham Ct Rd, London, W1T 4TQ",
-    },
-  };
+  const office = OFFICES.find((o) => o.name === selectedOffice);
 
   useEffect(() => {
-    if (!window.google) {
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwff104MGygd5jbcqjzVu8fMP7pp6M8I&libraries=places`;
-      script.async = true;
-      script.defer = true;
-      script.onload = initializeMap;
-      document.head.appendChild(script);
-    } else {
-      initializeMap();
-    }
-  }, []);
+    if (!loaded || !mapRef.current || mapInstance.current) return;
+    mapInstance.current = new window.google.maps.Map(mapRef.current, {
+      center: { lat: office.lat, lng: office.lng },
+      zoom: 15,
+      styles: MAP_STYLE,
+      disableDefaultUI: true,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: true,
+      zoomControl: true,
+      controlSize: 32,
+      scrollwheel: false,
+    });
+  }, [loaded]);
 
   useEffect(() => {
-    if (map && selectedOffice) {
-      const office = offices[selectedOffice];
-      if (office) {
-        map.setCenter({ lat: office.lat, lng: office.lng });
-        map.setZoom(15);
-
-        // Clear existing markers
-        markers.forEach((marker) => marker.setMap(null));
-
-        // Add new marker
-        const marker = new window.google.maps.Marker({
-          position: { lat: office.lat, lng: office.lng },
-          map: map,
-          title: selectedOffice,
-          icon: {
-            path: window.google.maps.SymbolPath.CIRCLE,
-            scale: 10,
-            fillColor: "#000000",
-            fillOpacity: 1,
-            strokeColor: "#ffffff",
-            strokeWeight: 2,
-          },
-        });
-
-        setMarkers([marker]);
+    if (!loaded || !mapInstance.current || !office) return;
+    const map = mapInstance.current;
+    map.setCenter({ lat: office.lat, lng: office.lng });
+    map.setZoom(15);
+    if (markerRef.current) markerRef.current.setMap(null);
+    markerRef.current = new window.google.maps.Marker({
+      position: { lat: office.lat, lng: office.lng },
+      map,
+      title: office.name,
+      icon: {
+        path: window.google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: "#000000",
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 2,
+      },
+    });
+    return () => {
+      if (markerRef.current) {
+        markerRef.current.setMap(null);
+        markerRef.current = null;
       }
-    }
-  }, [map, selectedOffice]);
-
-  const initializeMap = () => {
-    if (mapRef.current) {
-      const mapInstance = new window.google.maps.Map(mapRef.current, {
-        center: { lat: 51.4613, lng: -0.3037 },
-        zoom: 15,
-        styles: MAP_STYLE,
-        disableDefaultUI: true,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: true,
-        zoomControl: true,
-        controlSize: 32,
-      });
-      setMap(mapInstance);
-    }
-  };
+    };
+  }, [loaded, office]);
 
   return (
     <div
       ref={mapRef}
       className="w-full h-full overflow-hidden min-h-96 rounded-2xl"
-      style={{ minHeight: "400px" }}
+      style={{ minHeight: "600px" }}
     />
   );
 };
 
 export const OfficeDirections = () => {
-  const [selectedOffice, setSelectedOffice] = useState("Richmond");
-
-  const offices = [
-    {
-      name: "Richmond",
-      address: "56 Kew Road, Richmond, Surrey, TW9 2PQ, 020 8948 5808",
-      bgColor: "bg-lime-200",
-    },
-    {
-      name: "South Bank",
-      address: "30 Stamford Street, London, SE1 9PY, 020 3908 4428",
-      bgColor: "bg-white",
-    },
-    {
-      name: "Tottenham Ct Rd",
-      address: "85 Tottenham Ct Rd, London, W1T 4TQ",
-      bgColor: "bg-white",
-    },
-  ];
-
+  const [selectedOffice, setSelectedOffice] = useState(OFFICES[0].name);
+  // ! add responsive styles for the office cards
   return (
-    <div className="px-4 py-10">
-      <div className="mx-auto">
-        <h1 className="mb-8 text-4xl font-black tracking-tight text-black sm:mb-12 sm:text-5xl md:text-5xl lg:text-6xl font-mundial-demi">
-          Office Directions
-        </h1>
+    <div>
+      <div className="relative py-10">
+        <div className="px-4 py-4">
+          <h1 className="mb-8 text-5xl ">Office Directions</h1>
 
-        <div className="space-y-8">
-          {/* Office List */}
-          <div className="space-y-4">
-            {offices.map((office) => (
-              <div
-                key={office.name}
-                className={`${
-                  office.bgColor
-                } border-[1.5px] border-black rounded-2xl overflow-hidden cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                  selectedOffice === office.name ? "ring-2 ring-black" : ""
-                }`}
-                onClick={() => setSelectedOffice(office.name)}
-              >
-                <div className="flex items-center justify-between p-6">
-                  <div className="flex-1">
-                    <h3 className="mb-2 text-xl font-bold text-black">
-                      {office.name}
-                    </h3>
-                    <p className="text-base font-medium text-black">
-                      {office.address}
-                    </p>
-                  </div>
-                  <div className="ml-4">
-                    <svg
-                      className="w-6 h-6 text-black"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+          <div className="space-y-1">
+            {OFFICES.map((office) => {
+              const isSelected = selectedOffice === office.name;
+              return (
+                <div
+                  key={office.name}
+                  className={`border bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-200 ${
+                    isSelected
+                      ? "bg-[linear-gradient(94deg,_#ebffb4_0%,_#adffdf_100%)] border-transparent"
+                      : "border-gray-900"
+                  }`}
+                  onClick={() => setSelectedOffice(office.name)}
+                  style={
+                    isSelected
+                      ? {
+                          background:
+                            "linear-gradient(94deg, #ebffb4 0%, #adffdf 100%)",
+                          borderColor: "transparent",
+                        }
+                      : {}
+                  }
+                >
+                  <div className="flex items-center px-10 py-6">
+                    <div className="flex-1">
+                      <h3 className="text-2xl">{office.name}</h3>
+                    </div>
+                    <div className="flex-[2] text-center">
+                      <p className="text-lg">{office.address}</p>
+                    </div>
+                    <div className="flex-shrink-0 ml-6">
+                      <svg
+                        width="26"
+                        height="26"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M24.25 25.5H6.75C6.04688 25.5 5.5 24.9531 5.5 24.25C5.5 23.625 6.04688 23 6.75 23H21.2031L0.8125 2.6875C0.34375 2.21875 0.34375 1.35938 0.8125 0.890625C1.28125 0.421875 2.14062 0.421875 2.60938 0.890625L23 21.2812V6.75C23 6.125 23.5469 5.5 24.25 5.5C24.875 5.5 25.5 6.125 25.5 6.75V24.25C25.5 24.9531 24.875 25.5 24.25 25.5Z"
+                          fill="#193154"
+                        ></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+        </div>
 
-          {/* Google Map Container */}
-          <div className="relative">
-            <div className="w-full h-full overflow-hidden rounded-2xl">
-              <GoogleMapComponent selectedOffice={selectedOffice} />
-            </div>
+        <div className="relative mt-4">
+          <div className="w-full h-full overflow-hidden rounded-2xl">
+            <GoogleMap selectedOffice={selectedOffice} />
           </div>
         </div>
       </div>
@@ -419,14 +412,12 @@ export const OfficeDirections = () => {
   );
 };
 
-const ContactPage = () => {
-  return (
-    <div>
-      <GetInTouch />
-      <ContactForm />
-      <OfficeDirections />
-    </div>
-  );
-};
+const ContactPage = () => (
+  <div>
+    <GetInTouch />
+    <ContactForm />
+    <OfficeDirections />
+  </div>
+);
 
 export default ContactPage;
