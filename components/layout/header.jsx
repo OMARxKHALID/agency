@@ -8,16 +8,19 @@ import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { ServicesDropdown, services } from "@/components/ui/services-dropdown";
 
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/showcase", label: "Showcase" },
-  { href: "/services", label: "Services" },
+  { href: "", label: "Services", hasDropdown: true },
 ];
 
 export function Header() {
   const { isScrolled } = useScrollDirection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
   const showDarkHeader = isScrolled;
@@ -53,10 +56,40 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="items-center hidden gap-8 lg:flex">
-            {navLinks.map(({ href, label }) => {
+            {navLinks.map(({ href, label, hasDropdown }) => {
               const isActive = pathname === href;
+
+              if (hasDropdown) {
+                return (
+                  <div key={label} className="relative">
+                    <span
+                      className={cn(
+                        "text-lg font-mundial-regular transition-colors relative overflow-hidden group px-1 cursor-pointer",
+                        navTextColor
+                      )}
+                      onClick={() => setServicesDropdownOpen((open) => !open)}
+                      tabIndex={0}
+                    >
+                      {label}
+                      <span
+                        className={cn(
+                          "pointer-events-none absolute left-0 bottom-0 h-0.5 w-full bg-black transform transition-transform duration-300 origin-left",
+                          servicesDropdownOpen
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        )}
+                      />
+                    </span>
+                    {servicesDropdownOpen && (
+                      <div className="fixed z-50 p-4 transition-all duration-500 shadow-lg top-16 left-8 right-4 sm:top-20 sm:left-6 sm:right-6 md:top-24 md:left-14 md:right-14 lg:top-28 lg:left-24 lg:right-24 xl:top-28 xl:left-24 xl:right-24">
+                        <ServicesDropdown />
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={href}
@@ -86,7 +119,6 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden"
@@ -99,20 +131,54 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="absolute left-0 right-0 mx-4 mt-4 border shadow-2xl top-full rounded-2xl border-slate-700/50 bg-slate-800/95 backdrop-blur-sm lg:hidden">
-            <nav className="flex flex-col p-3 space-y-2">
-              {navLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="px-6 py-4 text-lg transition-colors text-white/90 hover:bg-slate-700/50 font-mundial-demi rounded-xl"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              ))}
+          <div className="absolute left-0 right-0 mx-4 mt-2 border shadow-2xl top-full rounded-2xl border-slate-700/50 bg-slate-800/95 backdrop-blur-sm lg:hidden">
+            <nav className="flex flex-col p-2 space-y-1">
+              {navLinks.map(({ href, label, hasDropdown }) => {
+                if (hasDropdown) {
+                  return (
+                    <div key={label} className="relative">
+                      <button
+                        className="flex items-center justify-between w-full px-6 py-4 text-lg transition-colors text-white/90 hover:bg-slate-700/50 font-mundial-demi rounded-xl"
+                        onClick={() => setMobileServicesOpen((open) => !open)}
+                      >
+                        {label}
+                        <span className="ml-2">
+                          {mobileServicesOpen ? "▲" : "▼"}
+                        </span>
+                      </button>
+                      {mobileServicesOpen && (
+                        <div className="px-6 mt-2">
+                          <ul className="flex flex-col gap-2">
+                            {services.map((service) => (
+                              <li key={service.href}>
+                                <a
+                                  href={service.href}
+                                  className="block py-2 text-white/90 hover:underline"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  {service.title}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="px-6 py-4 text-lg transition-colors text-white/90 hover:bg-slate-700/50 font-mundial-demi rounded-xl"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+
               <Link
                 href="/contact"
                 className="flex items-center justify-between px-6 py-4 text-white transition-colors bg-blue-600 hover:bg-blue-700 font-mundial-demi rounded-xl"
