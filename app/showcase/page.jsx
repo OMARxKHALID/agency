@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { showcaseItems, portfolioItems } from "@/constants/projects";
+import { showcaseItems, portfolioItems } from "@/constants/showcase";
 
 export function Showcase() {
   return (
