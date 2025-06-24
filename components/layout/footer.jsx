@@ -38,7 +38,7 @@ export function Footer() {
                     WEB DEVELOPMENT
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2">
                   <span className="px-4 py-2 text-sm font-medium text-black bg-teal-300 rounded-full">
                     E-COMMERCE DEVELOPMENT
                   </span>
@@ -51,7 +51,7 @@ export function Footer() {
                     WEB BASED APPLICATIONS
                   </span>
                 </div>
-                <div>
+                <div className="flex flex-wrap gap-2">
                   <span className="px-4 py-2 text-sm font-medium text-black bg-teal-300 rounded-full">
                     WEB APP SECURITY
                   </span>
