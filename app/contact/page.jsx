@@ -4,32 +4,10 @@ import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import MAP_STYLE from "@/lib/styles.json";
 import { useGoogleMaps } from "@/hooks/use-google-maps";
+import { OFFICES } from "@/constants/offices";
+import { CONTACTS } from "@/constants/contacts";
 
 const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
-const OFFICES = [
-  {
-    name: "Richmond",
-    address: "56 Kew Road, Richmond, Surrey, TW9 2PQ, 020 8948 5808",
-    lat: 51.4613,
-    lng: -0.3037,
-    bgColor: "bg-lime-200",
-  },
-  {
-    name: "South Bank",
-    address: "30 Stamford Street, London, SE1 9PY, 020 3908 4428",
-    lat: 51.5074,
-    lng: -0.11,
-    bgColor: "bg-white",
-  },
-  {
-    name: "Tottenham Ct Rd",
-    address: "85 Tottenham Ct Rd, London, W1T 4TQ",
-    lat: 51.5198,
-    lng: -0.1343,
-    bgColor: "bg-white",
-  },
-];
 
 export const GetInTouch = () => {
   const [mounted, setMounted] = useState(false);
@@ -141,16 +119,14 @@ export const ContactForm = () => {
           Contact Us
         </h1>
         <div className="mb-8 space-y-4 sm:mb-10 md:mb-12">
-          <ContactInfoCard
-            city="London"
-            phone="020 3908 4428"
-            email="london@netdreams.co.uk"
-          />
-          <ContactInfoCard
-            city="Richmond"
-            phone="020 8948 5808"
-            email="richmond@netdreams.co.uk"
-          />
+          {CONTACTS.map((contact) => (
+            <ContactInfoCard
+              key={contact.city}
+              city={contact.city}
+              phone={contact.phone}
+              email={contact.email}
+            />
+          ))}
         </div>
         <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
           <FormInput

@@ -4,37 +4,9 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { videosProjects } from "@/constants/projects";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    src: "/videos/rosebank.mp4",
-    logo: "/placeholder-logo.svg",
-    title: "Rosebank Website Design And Development",
-    description:
-      "Creative exploration, showcase website design and custom UX/UI. We designed Rosebank's new website to highlight their famous showcase.",
-    tags: ["UX Design", "Web Design", "Web Development"],
-    link: "/our-work/rosebank-landscaping/",
-  },
-  {
-    src: "/videos/rosebank2.mp4",
-    logo: "/placeholder-logo.svg",
-    title: "Project Two Design",
-    description:
-      "Another amazing project showcasing our capabilities in design and development.",
-    tags: ["Brand Design", "UI Design", "Development"],
-    link: "/our-work/project-two/",
-  },
-  {
-    src: "/videos/rosebank.mp4",
-    logo: "/placeholder-logo.svg",
-    title: "Project Three Innovation",
-    description: "Innovative solutions for modern design challenges.",
-    tags: ["Innovation", "Web Design", "Development"],
-    link: "/our-work/project-three/",
-  },
-];
 
 const VideoSlide = ({ project, index, innerRef }) => (
   <div
@@ -139,7 +111,7 @@ export function VideosSection() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: `+=${projects.length * 100}%`,
+        end: `+=${videosProjects.length * 100}%`,
         scrub: 1,
         pin: true,
       },
@@ -164,7 +136,7 @@ export function VideosSection() {
       ref={sectionRef}
       className="relative w-full h-[300vh] overflow-hidden -mb-[190vh]"
     >
-      {projects.map((project, index) => (
+      {videosProjects.map((project, index) => (
         <VideoSlide
           key={index}
           index={index}

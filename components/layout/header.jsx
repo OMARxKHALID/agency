@@ -8,7 +8,8 @@ import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { ServicesDropdown, services } from "@/components/ui/services-dropdown";
+import { ServicesDropdown } from "@/components/ui/services-dropdown";
+import { services } from "@/constants/services";
 
 const navLinks = [
   { href: "/about", label: "About" },

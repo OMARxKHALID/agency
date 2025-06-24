@@ -1,5 +1,5 @@
 "use client";
-import { icons } from "@/components/constants/icons";
+import { icons } from "@/constants/icons";
 import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
 
