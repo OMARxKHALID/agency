@@ -78,8 +78,8 @@ export function TestimonialsSection() {
                   className="flex-shrink-0 px-4"
                   style={{ width: `${100 / testimonials.length}%` }}
                 >
-                  <div className="h-full p-3 bg-[#E9FFFE]">
-                    <div className="h-full p-2 bg-[#E9FFFE]">
+                  <div className="h-full px-10 py-16 bg-[#E9FFFE]">
+                    <div className="h-full bg-[#E9FFFE]">
                       <blockquote className="mb-6 text-lg leading-relaxed text-gray-900 font-mundial-demi lg:mb-8 lg:text-xl">
                         '{testimonial.quote}'
                       </blockquote>

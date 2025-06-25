@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VideoSlide = ({ project, index, innerRef }) => (
   <div
     ref={innerRef}
-    className="absolute inset-0 w-full h-screen py-8"
+    className="absolute inset-0 w-full h-screen md:px-10 lg:p-12 xl:p-12"
     style={{ zIndex: index + 1 }}
   >
     <div className="relative w-full h-full overflow-hidden rounded-2xl">
