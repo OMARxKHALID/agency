@@ -6,7 +6,6 @@ module.exports = {
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
-    "*.{js,js,jsx,jsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -50,11 +49,11 @@ module.exports = {
         "mundial-demi": ["Mundial Demi-bold", "system-ui", "sans-serif"],
         "mundial-bold": ["Mundial Bold", "system-ui", "sans-serif"],
         "dm-mono": ["DM Mono", "monospace"],
-        dmmono: ["DM Mono", "monospace"], // alias for font-dm-mono
+        dmmono: ["DM Mono", "monospace"],
         schibsted: ["Schibsted Grotesk", "system-ui", "sans-serif"],
       },
       fontWeight: {
-        "mundial-regular": "500",
+        "mundial-regular": "400",
         "mundial-demi": "600",
         "mundial-bold": "700",
         "dm-mono-medium": "500",
