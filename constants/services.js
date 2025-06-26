@@ -46,7 +46,7 @@ export const services = [
     icon: <Smartphone className="w-6 h-6 text-white stroke-2" />,
     title: "Web Based Applications",
     description: "Web based application development for mobile",
-    href: "/services/web-apps",
+    href: "/services/web-based-applications",
   },
   {
     icon: <Shield className="w-6 h-6 text-white stroke-2" />,
